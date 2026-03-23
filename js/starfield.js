@@ -103,16 +103,11 @@
 
     ctx.globalAlpha = 1;
 
-    // Earth blue glow fades in toward end of section
-    if (p > 0.68) {
-      const ea = (p - 0.68) / 0.32;
-      const eg = ctx.createRadialGradient(cx, cy, 0, cx, cy, W * 0.55);
-      eg.addColorStop(0,   `rgba(0,90,220,${ea * 0.18})`);
-      eg.addColorStop(0.5, `rgba(0,50,150,${ea * 0.09})`);
-      eg.addColorStop(1,   'rgba(0,0,0,0)');
-      ctx.fillStyle = eg;
-      ctx.fillRect(0, 0, W, H);
-    }
+   // Replace the existing Earth glow block with this:
+if (p > 0.65) {
+  const ea = (p - 0.65) / 0.35;
+  drawEarthOnStarfield(ctx, W, H, ea, time);
+}
 
     // Fade out big hero name
     const hero = document.getElementById('space-hero');
@@ -125,7 +120,26 @@
     time++;
     requestAnimationFrame(draw);
   }
+  
+function drawEarthOnStarfield(ctx, W, H, alpha, time) {
+  const cx = W / 2, cy = H / 2;
+  const r = Math.min(W, H) * 0.28 * alpha; // grows as alpha increases
 
+  // Atmosphere
+  const atmo = ctx.createRadialGradient(cx, cy, r * 0.85, cx, cy, r * 1.4);
+  atmo.addColorStop(0, `rgba(30,110,230,${0.2 * alpha})`);
+  atmo.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = atmo;
+  ctx.beginPath(); ctx.arc(cx, cy, r * 1.4, 0, Math.PI * 2); ctx.fill();
+
+  // Ocean
+  const ocean = ctx.createRadialGradient(cx - r*0.28, cy - r*0.32, 0, cx, cy, r);
+  ocean.addColorStop(0, '#1a55a8'); ocean.addColorStop(1, '#040e30');
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = ocean;
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+  ctx.globalAlpha = 1;
+}
   /* ── Shooting stars ── */
   function spawnShootingStar() {
     const p = getProgress();
