@@ -1,0 +1,139 @@
+/* =============================================
+   ABOUT.CSS — Landing / About section
+   ============================================= */
+
+#about-section {
+  position: relative; min-height: 100vh;
+  padding: 8rem 5% 6rem;
+  display: flex; flex-direction: column; align-items: center;
+  background:
+    radial-gradient(ellipse at 12% 55%, rgba(168,85,247,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 88% 20%, rgba(0,229,255,0.05) 0%, transparent 55%),
+    var(--bg2);
+  overflow: hidden;
+}
+#about-section::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(0,229,255,0.025) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(0,229,255,0.025) 60px);
+}
+
+/* ── LOCATION PILL ── */
+.loc-pill {
+  font-family: var(--FM); font-size: 0.7rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.48rem 1.3rem; border-radius: 999px;
+  border: 1px solid rgba(0,229,255,0.15);
+  background: rgba(0,229,255,0.04); color: var(--accent);
+  margin-bottom: 3.5rem; position: relative; z-index: 1;
+  animation: pill-pulse 2.8s ease-in-out infinite;
+}
+@keyframes pill-pulse {
+  0%,100% { border-color: rgba(0,229,255,0.12); }
+  50%      { border-color: rgba(0,229,255,0.45); box-shadow: 0 0 20px rgba(0,229,255,0.08); }
+}
+
+/* ── ABOUT GRID ── */
+.about-grid {
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem; max-width: 1140px; width: 100%;
+  margin-bottom: 5rem; position: relative; z-index: 1;
+  align-items: center;
+}
+.about-pre {
+  font-family: var(--FM); font-size: 0.75rem;
+  color: var(--muted); letter-spacing: 0.22em; margin-bottom: 0.5rem;
+}
+.about-name {
+  font-family: var(--FD);
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-weight: 900; line-height: 0.88;
+  color: #fff; margin-bottom: 1.5rem;
+}
+.about-name .stroke {
+  -webkit-text-stroke: 1.5px var(--accent);
+  color: transparent;
+  text-shadow: 0 0 55px rgba(0,229,255,0.25);
+  display: block;
+}
+.role-pills { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 2rem; }
+.rpill {
+  font-family: var(--FM); font-size: 0.6rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid rgba(255,107,53,0.3); border-radius: 3px;
+  color: var(--orange); background: rgba(255,107,53,0.05);
+}
+.about-bio {
+  font-size: 1rem; line-height: 1.82;
+  color: var(--muted); max-width: 490px; margin-bottom: 2.5rem;
+}
+.about-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ── STAT CARDS ── */
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.stat-card {
+  padding: 1.7rem 1.4rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-bd);
+  border-radius: 9px;
+  transition: all 0.32s var(--ease);
+  position: relative; overflow: hidden;
+}
+.stat-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0; transition: opacity .3s;
+}
+.stat-card:hover::before { opacity: 1; }
+.stat-card:hover {
+  border-color: rgba(0,229,255,0.3); transform: translateY(-4px);
+  box-shadow: 0 14px 38px rgba(0,0,0,0.4);
+}
+.stat-num {
+  font-family: var(--FD); font-size: 2.8rem;
+  font-weight: 900; color: var(--accent); line-height: 1;
+  text-shadow: 0 0 22px rgba(0,229,255,0.4); margin-bottom: 0.45rem;
+}
+.stat-lbl {
+  font-family: var(--FM); font-size: 0.6rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); line-height: 1.4;
+}
+
+/* ── QUICK NAV CARDS ── */
+.nav-card-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1rem; max-width: 1140px; width: 100%;
+  position: relative; z-index: 1;
+}
+.nav-card {
+  background: var(--card-bg); border: 1px solid var(--card-bd);
+  border-radius: 10px; padding: 1.9rem 1.4rem;
+  text-align: center; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  transition: all 0.35s var(--ease);
+}
+.nav-card:hover {
+  border-color: rgba(0,229,255,0.4);
+  background: rgba(0,229,255,0.05);
+  transform: translateY(-7px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.35), 0 0 40px rgba(0,229,255,0.07);
+}
+.nc-icon { font-size: 2rem; margin-bottom: 0.25rem; }
+.nc-title {
+  font-family: var(--FD); font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff;
+}
+.nc-sub { font-family: var(--FM); font-size: 0.58rem; color: var(--muted); letter-spacing: 0.07em; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .nav-card-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 500px) {
+  .nav-card-grid { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+}

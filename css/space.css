@@ -1,0 +1,163 @@
+/* =============================================
+   SPACE.CSS — Space zoom + info pins
+   ============================================= */
+
+/* ── SPACE SECTION ── */
+#space-section {
+  position: relative;
+  height: 600vh;
+  background: #000005;
+}
+
+#starfield-canvas {
+  position: sticky; top: 0;
+  width: 100%; height: 100vh;
+  display: block; z-index: 1;
+}
+
+/* ── BIG NAME HERO ── */
+#space-hero {
+  position: sticky; top: 0; height: 100vh;
+  margin-top: -100vh; z-index: 8;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; pointer-events: none;
+}
+.sh-name {
+  font-family: var(--FD);
+  font-size: clamp(3rem, 9vw, 9rem);
+  font-weight: 900; line-height: 0.88;
+  color: #fff; letter-spacing: 0.04em;
+  text-shadow: 0 0 80px rgba(0,229,255,0.3), 0 0 160px rgba(0,229,255,0.1);
+  animation: name-glow 4s ease-in-out infinite;
+}
+.sh-name .hollow {
+  -webkit-text-stroke: 1.5px var(--accent);
+  color: transparent;
+  text-shadow: 0 0 60px rgba(0,229,255,0.35);
+  display: block;
+}
+.sh-role {
+  font-family: var(--FM); font-size: clamp(0.62rem, 1.2vw, 0.88rem);
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(0,229,255,0.55); margin-top: 1.4rem;
+}
+@keyframes name-glow {
+  0%,100% { text-shadow: 0 0 80px rgba(0,229,255,0.25); }
+  50%      { text-shadow: 0 0 120px rgba(0,229,255,0.55), 0 0 200px rgba(0,229,255,0.18); }
+}
+
+/* ── SCROLL HINT ── */
+#scroll-hint {
+  position: sticky; top: 0; height: 100vh;
+  margin-top: -100vh; z-index: 9;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  padding-bottom: 3rem; pointer-events: none;
+}
+.hint-text {
+  font-family: var(--FM); font-size: 0.66rem;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  animation: fade-float 2.5s ease-in-out infinite;
+}
+.hint-arrow {
+  font-size: 1rem; color: rgba(0,229,255,0.35);
+  margin-top: 0.5rem;
+  animation: bounce-down 1.4s ease-in-out infinite;
+}
+@keyframes fade-float { 0%,100%{opacity:.25;} 50%{opacity:.7;} }
+@keyframes bounce-down { 0%,100%{transform:translateY(0);opacity:.35;} 50%{transform:translateY(9px);opacity:1;} }
+
+/* ── INFO PINS LAYER ── */
+#pin-layer {
+  position: sticky; top: 0; height: 100vh;
+  margin-top: -100vh; z-index: 20;
+  pointer-events: none;
+}
+
+.info-pin {
+  position: absolute;
+  display: flex; align-items: center; gap: 0;
+  opacity: 0;
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+/* pin positions */
+.pin-tl  { top: 18%;  left: 5%; }
+.pin-tr  { top: 28%;  right: 6%; flex-direction: row-reverse; }
+.pin-ml  { top: 46%;  left: 7%; }
+.pin-mr  { top: 20%;  right: 10%; flex-direction: row-reverse; }
+.pin-bl  { bottom: 30%; left: 6%; }
+.pin-bc  { top: 42%;  left: 50%; transform: translateX(-50%); }
+
+/* entry states */
+.info-pin             { transform: translateY(14px) scale(0.92); }
+.info-pin.pin-show    { opacity: 1 !important; transform: translateY(0) scale(1) !important; }
+.pin-tr.info-pin      { transform: translateY(14px) scale(0.92); }
+.pin-mr.info-pin      { transform: translateY(14px) scale(0.92); }
+.pin-bc.info-pin      { transform: translateX(-50%) translateY(14px) scale(0.92); }
+.pin-bc.pin-show      { transform: translateX(-50%) translateY(0) scale(1) !important; }
+.info-pin.pin-fade    { opacity: 0 !important; transform: translateY(-12px) scale(0.94) !important; }
+.pin-bc.pin-fade      { opacity: 0 !important; transform: translateX(-50%) translateY(-12px) scale(0.94) !important; }
+
+/* dot */
+.pin-dot {
+  width: 11px; height: 11px; flex-shrink: 0;
+  background: var(--accent); border-radius: 50%;
+  box-shadow: 0 0 14px var(--accent), 0 0 35px rgba(0,229,255,0.45);
+  animation: dot-pulse 2.2s ease-in-out infinite;
+}
+@keyframes dot-pulse {
+  0%,100% { box-shadow: 0 0 14px var(--accent), 0 0 35px rgba(0,229,255,0.4); }
+  50%      { box-shadow: 0 0 22px var(--accent), 0 0 60px rgba(0,229,255,0.7); }
+}
+
+/* connector line */
+.pin-line {
+  width: 32px; height: 1px; flex-shrink: 0;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+}
+.pin-tr .pin-line,
+.pin-mr .pin-line { background: linear-gradient(270deg, var(--accent) 0%, transparent 100%); }
+
+/* card */
+.pin-card {
+  background: rgba(2,3,12,0.92);
+  border: 1px solid rgba(0,229,255,0.22);
+  border-radius: 8px; padding: 0.85rem 1.15rem;
+  backdrop-filter: blur(18px);
+  min-width: 185px; max-width: 230px;
+  position: relative; overflow: hidden;
+}
+.pin-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.pin-label {
+  font-family: var(--FM); font-size: 0.56rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); display: block; margin-bottom: 0.28rem;
+}
+.pin-card h3 {
+  font-family: var(--FD); font-size: 0.88rem;
+  font-weight: 700; color: #fff; margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+.pin-card p {
+  font-family: var(--FM); font-size: 0.65rem;
+  color: var(--muted); line-height: 1.45;
+}
+
+/* shooting star */
+.shoot-star {
+  position: absolute; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+  border-radius: 999px; pointer-events: none;
+  animation: shoot 1.6s linear forwards;
+}
+@keyframes shoot {
+  0%   { width: 0; opacity: 0; }
+  15%  { opacity: 1; }
+  100% { width: 220px; opacity: 0; transform: translateX(280px); }
+}

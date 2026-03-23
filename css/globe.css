@@ -1,0 +1,53 @@
+/* =============================================
+   GLOBE.CSS — Rotating Earth + landing
+   ============================================= */
+
+#globe-section {
+  position: relative;
+  height: 250vh;
+  background: radial-gradient(ellipse at center, #030d20 0%, #000005 100%);
+  overflow: hidden;
+}
+
+#globe-canvas {
+  position: sticky; top: 0;
+  width: 100%; height: 100vh;
+  display: block; z-index: 2;
+}
+
+/* ── GLOBE LABEL ── */
+#globe-label {
+  position: sticky; top: 0; height: 100vh;
+  margin-top: -100vh; z-index: 10;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  padding-bottom: 5rem; text-align: center;
+  pointer-events: none;
+  opacity: 0; transition: opacity 0.9s ease;
+}
+#globe-label.visible { opacity: 1; }
+
+.gl-approaching {
+  font-family: var(--FD);
+  font-size: clamp(1.3rem, 2.8vw, 3rem);
+  font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fff; text-shadow: 0 0 40px rgba(0,229,255,0.65);
+}
+.gl-destination {
+  font-family: var(--FM); font-size: 0.78rem;
+  letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase;
+  margin-top: 0.45rem;
+}
+.gl-coords {
+  font-family: var(--FM); font-size: 0.6rem;
+  letter-spacing: 0.15em; color: rgba(0,229,255,0.45);
+  margin-top: 0.2rem;
+}
+
+/* ── FADE TO ABOUT ── */
+#globe-section::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 500px;
+  background: linear-gradient(to bottom, transparent, var(--bg2));
+  z-index: 3; pointer-events: none;
+}

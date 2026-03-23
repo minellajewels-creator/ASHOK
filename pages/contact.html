@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Ashok P S</title>
+  <link rel="stylesheet" href="../css/global.css"/>
+  <link rel="stylesheet" href="../css/pages.css"/>
+</head>
+<body>
+
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <div id="scroll-progress"><div id="scroll-bar"></div></div>
+
+  <nav id="main-nav">
+    <a class="nav-logo" href="../index.html">APS</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Work</a>
+      <a href="life.html">Life</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="hero-tag">Let's talk</div>
+    <h1 class="hero-h1">Get in <em>Touch</em></h1>
+    <p class="hero-p">SAP consulting, collabs, Minella Jewels, or just vibing — I'm here. I respect time as much as you do.</p>
+  </div>
+
+  <div class="sec-wrap">
+
+    <div class="avail-badge reveal">
+      <span class="avail-dot"></span>
+      Open to Freelance SAP Projects &amp; Collabs
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- Info -->
+      <div class="contact-info">
+        <div class="ci-item reveal">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-val">Coimbatore, Tamil Nadu, India</div>
+          </div>
+        </div>
+        <div class="ci-item reveal">
+          <div class="ci-icon">💼</div>
+          <div>
+            <div class="ci-label">Current Role</div>
+            <div class="ci-val">Sr. SAP ABAP on HANA Consultant @ SAPZcodes</div>
+          </div>
+        </div>
+        <div class="ci-item reveal">
+          <div class="ci-icon">📸</div>
+          <div>
+            <div class="ci-label">Personal Instagram</div>
+            <div class="ci-val"><a href="https://instagram.com/bro_goats" target="_blank">@bro_goats</a></div>
+          </div>
+        </div>
+        <div class="ci-item reveal">
+          <div class="ci-icon">💍</div>
+          <div>
+            <div class="ci-label">Business Instagram</div>
+            <div class="ci-val"><a href="https://instagram.com/minellajewels" target="_blank">@minellajewels</a></div>
+          </div>
+        </div>
+        <div class="ci-item reveal">
+          <div class="ci-icon">🌐</div>
+          <div>
+            <div class="ci-label">Business Website</div>
+            <div class="ci-val"><a href="https://minella.in" target="_blank">minella.in</a></div>
+          </div>
+        </div>
+        <div class="ci-item reveal">
+          <div class="ci-icon">⏳</div>
+          <div>
+            <div class="ci-label">Response Time</div>
+            <div class="ci-val">Fast — I treat time as the most valuable thing.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form reveal">
+        <div>
+          <label class="form-label">Your Name</label>
+          <input class="form-input" type="text" placeholder="What should I call you?"/>
+        </div>
+        <div>
+          <label class="form-label">Topic</label>
+          <input class="form-input" type="text" placeholder="SAP consulting, collab, Minella Jewels..."/>
+        </div>
+        <div>
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Tell me what's on your mind..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm(this)">Send Message →</button>
+        <p id="form-success">✓ Message sent! I'll get back to you soon.</p>
+      </div>
+
+    </div>
+
+    <!-- Social -->
+    <div class="sec-title">Find me <span>Online</span></div>
+    <span class="sec-sub">All the places I exist</span>
+
+    <div class="social-grid">
+      <a class="social-card reveal" href="https://instagram.com/bro_goats" target="_blank">
+        <div class="sc-icon">📸</div>
+        <div class="sc-platform">Instagram</div>
+        <div class="sc-handle">@bro_goats</div>
+      </a>
+      <a class="social-card reveal" href="https://instagram.com/minellajewels" target="_blank">
+        <div class="sc-icon">💍</div>
+        <div class="sc-platform">Instagram</div>
+        <div class="sc-handle">@minellajewels</div>
+      </a>
+      <a class="social-card reveal" href="https://minella.in" target="_blank">
+        <div class="sc-icon">🌐</div>
+        <div class="sc-platform">Minella Jewels</div>
+        <div class="sc-handle">minella.in</div>
+      </a>
+      <div class="social-card reveal">
+        <div class="sc-icon">💼</div>
+        <div class="sc-platform">LinkedIn</div>
+        <div class="sc-handle">Ashok P S</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">APS</div>
+      <div class="footer-copy">© 2025 Ashok P S · Coimbatore · Time is the real currency.</div>
+      <div class="footer-links">
+        <a href="https://instagram.com/bro_goats" target="_blank">@bro_goats</a>
+        <a href="https://minella.in" target="_blank">minella.in</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/cursor.js"></script>
+  <script src="../js/reveal.js"></script>
+  <script>
+    function submitForm(btn) {
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = '✓ Sent!';
+        document.getElementById('form-success').style.display = 'block';
+      }, 900);
+    }
+  </script>
+</body>
+</html>
