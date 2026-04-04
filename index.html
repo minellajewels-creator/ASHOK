@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/space.css"/>
   <link rel="stylesheet" href="css/globe.css"/>
   <link rel="stylesheet" href="css/about.css"/>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
 </head>
 <body>
 
@@ -37,14 +38,21 @@
     <!-- Starfield canvas (sticky) -->
     <canvas id="starfield-canvas"></canvas>
 
-    <!-- Big name (fades as you scroll) -->
-    <div id="space-hero">
-      <div class="sh-name">
-        ASHOK
-        <span class="hollow">P S</span>
-      </div>
-      <div class="sh-role">SAP ABAP on HANA &amp; RAP Consultant · Coimbatore</div>
+<div id="space-hero">
+  <div class="sh-left">
+    <div class="sh-name">
+      ASHOK
+      <span class="hollow">P S</span>
     </div>
+    <div class="sh-role">SAP ABAP on HANA &amp; RAP Consultant · Coimbatore</div>
+  </div>
+  <div class="sh-spline">
+    <spline-viewer
+      url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+      loading-anim-type="none"
+    ></spline-viewer>
+  </div>
+</div>
 
     <!-- Info pins (appear at different scroll depths) -->
     <div id="pin-layer">
